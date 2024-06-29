@@ -14,8 +14,8 @@ class TaskController extends Controller
 {
     public function index(){
         $tasks = Task::orderBy('completed_at')
-            ->orderBy('id', 'desc')
-            ->get();
+            ->orderBy('id', 'desc')->get();
+
         return view('tasks.index', compact('tasks'));
     }
 
@@ -38,7 +38,7 @@ class TaskController extends Controller
     public function update(UpdateRequest $request, Task $task){
         $data = $request->validated();
 
-      $data['completed_at'] = '123';
+      $data['completed_at'] = now();
       $task->update($data);
         return redirect()->route('tasks.index');
         }

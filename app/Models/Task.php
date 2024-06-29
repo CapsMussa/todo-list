@@ -8,10 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
     use HasFactory;
+
     protected $table;
     protected $guarded = false;
 
-    public function isCompleted(){
+
+    public function isCompleted()
+    {
         return $this->completed_at !== null;
     }
 
